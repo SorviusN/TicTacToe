@@ -17,7 +17,7 @@ namespace Lab04_TicTacToe.Classes
 		/// </summary>
 		public bool IsTurn { get; set; }
 
-
+		// Gets the desired input position from the user via given input, return the input in coordinate form (instance of Position)
 		public Position GetPosition(Board board)
 		{
 			Position desiredCoordinate = null;
@@ -29,7 +29,6 @@ namespace Lab04_TicTacToe.Classes
 			}
 			return desiredCoordinate;
 		}
-
 
 		public static Position PositionForNumber(int position)
 		{
@@ -49,20 +48,21 @@ namespace Lab04_TicTacToe.Classes
 			}
 		}
 
-
 		public void TakeTurn(Board board)
 		{
-			IsTurn = true;
+			IsTurn = true; // used by NextPlayer method in game class to see who is up next.
 
-			Console.WriteLine($"{Name} it is your turn");
+			Console.WriteLine($"{Name} it is your turn"); // telling the player it's their turn.
 
-			Position position = GetPosition(board);
+			Position position = GetPosition(board); //calling GetPosition method with our board as a parameter to 
+			//prompt user for a desired coordinate (position value).
 
-			if (Int32.TryParse(board.GameBoard[position.Row, position.Column], out int _))
+			if (Int32.TryParse(board.GameBoard[position.Row, position.Column], out int _)) //if value is a number (tries to parse)
 			{
-				board.GameBoard[position.Row, position.Column] = Marker;
+				board.GameBoard[position.Row, position.Column] = Marker; // the value at the stated position from GetPosition 
+				//is now whatever the Marker is (Either "X" or "O")
 			}
-			else
+			else // only occurs when the answer is already a marker.
 			{
 				Console.WriteLine("This space is already occupied");
 			}

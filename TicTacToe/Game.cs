@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lab04_TicTacToe.Classes
 {
@@ -14,9 +12,7 @@ namespace Lab04_TicTacToe.Classes
 
         /// <summary>
         /// require 2 players and a board to start a game
-        /// </summary>
-        /// <param name="="p1">Player 1</param>
-        /// 
+        /// </summary> 
 
         public Game(Player p1, Player p2)
         {
@@ -29,11 +25,11 @@ namespace Lab04_TicTacToe.Classes
 		/// Activate the Play of the game
 		/// </summary>
 		/// <returns>Winner</returns>
-        public Player Play ()
+        public Player Play()
         {
-			//TODO: Complete this method and utilize the rest of the class structure to play the game.
+            //TODO: Complete this method and utilize the rest of the class structure to play the game.
 
-			/*
+            /*
              * Complete this method by constructing the logic for the actual playing of Tic Tac Toe. 
              * 
              * A few things to get you started:
@@ -45,84 +41,99 @@ namespace Lab04_TicTacToe.Classes
                 and make sure that the game continues while there are unmarked spots on the board. 
             Use any and all pre-existing methods in this program to help construct the method logic. 
              */
-			for (int i = 0; i < 8; i++)
-            {
-				PlayerOne.TakeTurn();
-				PlayerTwo.TakeTurn();
+
+            // Set the values of the marker string to each player.
+            PlayerOne.Marker = "X";
+            PlayerTwo.Marker = "O";
+
+            Board.DisplayBoard();
+            /// While iterator is less than 9, call up the next player by checking which player has a positive IsTurn boolean.
+            /// the current player takes their turn with the function (chooses a number from the board.)
+            for (int i = 0; i < 9; i++) 
+			{
+                Player currentPlayer = NextPlayer();
+                currentPlayer.TakeTurn(Board);
+                bool winner = CheckForWinner(Board);
+                if (winner == true) return Winner;
+                Console.Clear();
+                Board.DisplayBoard();
             }
-			PlayerOne.TakeTurn();
-
-			Console.Clear();
-			Board.DisplayBoard();
+            Player p = new Player(); //placeholder player to return in the case that there is no winner.
+            return p;
+            // if all markers placed and no winner, create a draw;
         }
-		/// <summary>
-		/// Check if winner exists
-		/// </summary>
-		/// <param name="board">current state of the board</param>
-		/// <returns>if winner exists</returns>
-		public bool CheckForWinner(Board board)
-		{
-			int[][] winners = new int[][]
-			{
-				new[] {1,2,3},
-				new[] {4,5,6},
-				new[] {7,8,9},
+        /// <summary>
+        /// Check if winner exists
+        /// </summary>
+        /// <param name="board">current state of the board</param>
+        /// <returns>if winner exists</returns>
+        public bool CheckForWinner(Board board)
+        {
+            int[][] winners = new int[][]
+            {
+                new[] {1,2,3},
+                new[] {4,5,6},
+                new[] {7,8,9},
 
-				new[] {1,4,7},
-				new[] {2,5,8},
-				new[] {3,6,9},
+                new[] {1,4,7},
+                new[] {2,5,8},
+                new[] {3,6,9},
 
-				new[] {1,5,9},
-				new[] {3,5,7}
-			};
+                new[] {1,5,9},
+                new[] {3,5,7}
+            };
 
-			// Given all the winning conditions, Determine the winning logic. 
-			for (int i = 0; i < winners.Length; i++)
-			{
-				Position p1 = Player.PositionForNumber(winners[i][0]);
-				Position p2 = Player.PositionForNumber(winners[i][1]);
-				Position p3 = Player.PositionForNumber(winners[i][2]);
+            // Given all the winning conditions, Determine the winning logic. 
+            for (int i = 0; i < winners.Length; i++)
+            {
+                Position p1 = Player.PositionForNumber(winners[i][0]);
+                Position p2 = Player.PositionForNumber(winners[i][1]);
+                Position p3 = Player.PositionForNumber(winners[i][2]);
 
-				string a = Board.GameBoard[p1.Row, p1.Column];
-				string b = Board.GameBoard[p2.Row, p2.Column];
-				string c = Board.GameBoard[p3.Row, p3.Column];
+                string a = Board.GameBoard[p1.Row, p1.Column];
+                string b = Board.GameBoard[p2.Row, p2.Column];
+                string c = Board.GameBoard[p3.Row, p3.Column];
 
-				// TODO:  Determine a winner has been reached. 
-				// return true if a winner has been reached. 
-
-			}
-
-			return false;
-		}
-
-
-		/// <summary>
-		/// Determine next player
-		/// </summary>
-		/// <returns>next player</returns>
-		public Player NextPlayer()
-		{
-			return (PlayerOne.IsTurn) ? PlayerOne : PlayerTwo;
-		}
-
-		/// <summary>
-		/// End one players turn and activate the other
-		/// </summary>
-		public void SwitchPlayer()
-		{
-			if (PlayerOne.IsTurn)
-			{
-
-				PlayerOne.IsTurn = false;
+                // Checking the equality of the strings to see if they produce a three in a row (stated above)
+                if ((a == "X" && b == "X" && c == "X"))
+                {
+                    Winner = PlayerOne;
+                    return true;
+                }
+                else if (a == "O" && b == "O" && c == "O")
+                {
+                    Winner = PlayerTwo;
+                    return true;
+                }
+            } // if no winner is given, return false
+            return false;
+        }
 
 
-				PlayerTwo.IsTurn = true;
-			}
-			else
-			{
-				PlayerOne.IsTurn = true;
-				PlayerTwo.IsTurn = false;
-			}
-		}
-	}
+        /// <summary>
+        /// Determine next player
+        /// </summary>
+        /// <returns>next player</returns>
+        public Player NextPlayer()
+        {
+            return (PlayerOne.IsTurn) ? PlayerOne : PlayerTwo;
+        }
+
+        /// <summary>
+        /// End one players turn and activate the other
+        /// </summary>
+        public void SwitchPlayer()
+        {
+            if (PlayerOne.IsTurn)
+            {
+                PlayerOne.IsTurn = false;
+                PlayerTwo.IsTurn = true;
+            }
+            else
+            {
+                PlayerOne.IsTurn = true;
+                PlayerTwo.IsTurn = false;
+            }
+        }
+    }
 }
