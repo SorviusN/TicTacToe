@@ -17,6 +17,8 @@ namespace Lab04_TicTacToe.Classes
 		/// </summary>
 		public bool IsTurn { get; set; }
 
+		public int TurnAmount { get; set; }
+
 		// Gets the desired input position from the user via given input, return the input in coordinate form (instance of Position)
 		public Position GetPosition(Board board)
 		{
@@ -59,6 +61,7 @@ namespace Lab04_TicTacToe.Classes
 
 			if (Int32.TryParse(board.GameBoard[position.Row, position.Column], out int _)) //if value is a number (tries to parse)
 			{
+				TurnAmount++;
 				board.GameBoard[position.Row, position.Column] = Marker; // the value at the stated position from GetPosition 
 				//is now whatever the Marker is (Either "X" or "O")
 			}

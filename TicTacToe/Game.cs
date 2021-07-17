@@ -43,23 +43,27 @@ namespace Lab04_TicTacToe.Classes
              */
 
             // Set the values of the marker string to each player.
-            PlayerOne.Marker = "X";
-            PlayerTwo.Marker = "O";
-
-            Board.DisplayBoard();
+                PlayerOne.Marker = "X";
+                PlayerTwo.Marker = "O";
+                PlayerOne.Name = "Player One";
+                PlayerTwo.Name = "Player Two";
+                
+                Board.DisplayBoard();
             /// While iterator is less than 9, call up the next player by checking which player has a positive IsTurn boolean.
             /// the current player takes their turn with the function (chooses a number from the board.)
-            for (int i = 0; i < 9; i++) 
-			{
-                Player currentPlayer = NextPlayer();
-                currentPlayer.TakeTurn(Board);
-                bool winner = CheckForWinner(Board);
-                if (winner == true) return Winner;
-                Console.Clear();
-                Board.DisplayBoard();
-            }
-            Player p = new Player(); //placeholder player to return in the case that there is no winner.
-            return p;
+            bool winner = false;
+                while (winner == false && PlayerOne.TurnAmount < 5 && PlayerTwo.TurnAmount < 5) 
+                {
+                    Player currentPlayer = NextPlayer();
+                    currentPlayer.TakeTurn(Board);
+                    winner = CheckForWinner(Board);
+                    SwitchPlayer();
+                    Console.Clear();
+                    Board.DisplayBoard();
+                    if (winner == true) return Winner;
+                }
+                return Winner;
+            
             // if all markers placed and no winner, create a draw;
         }
         /// <summary>

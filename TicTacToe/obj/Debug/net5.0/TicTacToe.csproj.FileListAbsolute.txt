@@ -3,3 +3,14 @@ C:\Users\Jona\source\repos\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.Genera
 C:\Users\Jona\source\repos\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.AssemblyInfoInputs.cache
 C:\Users\Jona\source\repos\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.AssemblyInfo.cs
 C:\Users\Jona\source\repos\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\bin\Debug\net5.0\TicTacToe.exe
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\bin\Debug\net5.0\TicTacToe.deps.json
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\bin\Debug\net5.0\TicTacToe.runtimeconfig.json
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\bin\Debug\net5.0\TicTacToe.runtimeconfig.dev.json
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\bin\Debug\net5.0\TicTacToe.dll
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\bin\Debug\net5.0\ref\TicTacToe.dll
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\bin\Debug\net5.0\TicTacToe.pdb
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.dll
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\obj\Debug\net5.0\ref\TicTacToe.dll
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.pdb
+C:\Users\Jona\source\repos\TicTacToe\TicTacToe\obj\Debug\net5.0\TicTacToe.genruntimeconfig.cache

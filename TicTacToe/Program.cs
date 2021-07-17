@@ -16,16 +16,11 @@ namespace Lab04_TicTacToe
             Player PlayerTwo = new Player();
             Game Game = new(PlayerOne, PlayerTwo);
             Player Winner = Game.Play();
-
-            if (Winner != PlayerOne || Winner != PlayerTwo)
+            if (Winner != null)
             {
-                Console.WriteLine("There was a draw!");
+                Console.WriteLine($"{Winner.Name} Wins!");
             }
-
-            else
-            {
-                Console.WriteLine($"{Winner} Wins!");
-            }
+            else Console.WriteLine("Draw!");
         }
     }
 }
