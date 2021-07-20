@@ -68,6 +68,7 @@ namespace Lab04_TicTacToe.Classes
 			else // only occurs when the answer is already a marker.
 			{
 				Console.WriteLine("This space is already occupied");
+				Console.ReadLine();
 			}
 		}
 	}

@@ -27,13 +27,7 @@ namespace Lab04_TicTacToe.Classes
 		/// <returns>Winner</returns>
         public Player Play()
         {
-            //TODO: Complete this method and utilize the rest of the class structure to play the game.
-
-            /*
-             * Complete this method by constructing the logic for the actual playing of Tic Tac Toe. 
-             * 
-             * A few things to get you started:
-            1. A turn consists of a player picking a position on the board with their designated marker. 
+            /*1. A turn consists of a player picking a position on the board with their designated marker. 
             2. Display the board after every turn to show the most up to date state of the game
             3. Once a Winner is determined, display the board one final time and return a winner
             Few additional hints:
@@ -42,7 +36,7 @@ namespace Lab04_TicTacToe.Classes
             Use any and all pre-existing methods in this program to help construct the method logic. 
              */
 
-            // Set the values of the marker string to each player.
+            /// Set the values of the marker string to each player.
                 PlayerOne.Marker = "X";
                 PlayerTwo.Marker = "O";
                 PlayerOne.Name = "Player One";
@@ -54,13 +48,13 @@ namespace Lab04_TicTacToe.Classes
             bool winner = false;
                 while (winner == false && PlayerOne.TurnAmount < 5 && PlayerTwo.TurnAmount < 5) 
                 {
-                    Player currentPlayer = NextPlayer();
-                    currentPlayer.TakeTurn(Board);
-                    winner = CheckForWinner(Board);
-                    SwitchPlayer();
-                    Console.Clear();
-                    Board.DisplayBoard();
-                    if (winner == true) return Winner;
+					Player currentPlayer = NextPlayer();
+					currentPlayer.TakeTurn(Board);
+					winner = CheckForWinner(Board);
+					SwitchPlayer();
+					Console.Clear();
+					Board.DisplayBoard();
+					if (winner == true) return Winner;
                 }
                 return Winner;
             
@@ -98,7 +92,8 @@ namespace Lab04_TicTacToe.Classes
                 string b = Board.GameBoard[p2.Row, p2.Column];
                 string c = Board.GameBoard[p3.Row, p3.Column];
 
-                // Checking the equality of the strings to see if they produce a three in a row (stated above)
+                // Checking the equality of the strings to see if they produce a three in a row with any of the orders
+                // (stated above)
                 if ((a == "X" && b == "X" && c == "X"))
                 {
                     Winner = PlayerOne;
